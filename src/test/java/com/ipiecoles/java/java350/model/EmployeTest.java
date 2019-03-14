@@ -2,6 +2,8 @@ package com.ipiecoles.java.java350.model;
 
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.time.LocalDate;
 
@@ -18,7 +20,7 @@ public class EmployeTest {
         Integer nbAnnee = employe.getNombreAnneeAnciennete(); // Je récupère le nombre d'années dans une variable avec la méthode. Cette méthode repose sur une instance donc on doit instancier employé dans les données d'entrée
 
         // Then
-        Assertions.assertThat(nbAnnee).isEqualTo(0); // Quelqu'un qui est embauché maintenant, on doit donc avoir 0
+        Assertions.assertThat(nbAnnee).isEqualTo(0); // Pour quelqu'un qui est embauché maintenant, on doit donc avoir 0 année d'ancienneté
     }
 
     public void testGetNombreAnneeAncienneteIsNull() {
@@ -55,5 +57,25 @@ public class EmployeTest {
 
         // Then
         Assertions.assertThat(nbAnnee).isEqualTo(0);
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+           "1, 'M12345', 0, 1.0, 1700.0"
+    })
+
+    public void getPrimeAnnuelle (Integer performance, String matricule, Long nbYearsAnciennete,
+                                        Double tempsPartiel, Double primeAnnuelle) {
+        // Given
+        Employe e = new Employe();
+        e.setPerformance(performance);
+        e.setMatricule(matricule);
+        e.setTempsPartiel(tempsPartiel);
+        e.setDateEmbauche(LocalDate.now().minusYears(nbYearsAnciennete));
+        // When
+        Double prime = e.getPrimeAnnuelle();
+
+        // Then
+        Assertions.assertThat(prime).isEqualTo(primeAnnuelle);
     }
 }
