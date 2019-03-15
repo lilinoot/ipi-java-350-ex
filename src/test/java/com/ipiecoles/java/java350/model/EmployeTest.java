@@ -1,9 +1,12 @@
 package com.ipiecoles.java.java350.model;
 
+import com.ipiecoles.java.java350.repository.EmployeRepository;
+import com.ipiecoles.java.java350.service.EmployeService;
 import org.assertj.core.api.Assertions;
 import org.junit.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+
 
 import java.time.LocalDate;
 
@@ -62,8 +65,11 @@ public class EmployeTest {
     @ParameterizedTest
     @CsvSource({
            "1, 'M12345', 0, 1.0, 1700.0",
+            "1, 'M12345', 1, 1.0, 1800.0",
             "1, 'T12345', 2, 1.0, 1200.0", // Cas d'un employé non manager en performance de base
-            "2, 'T12345', 0, 1.0, 2300.0" // Cas d'un manager avec une performance différente
+            "1, 'T12345', 2, 0.5, 600.0",
+            "2, 'T12345', 0, 1.0, 2300.0", // Cas d'un manager avec une performance différente
+            "2, 'T12345', 3, 1.0, 2600.0"
     })
 
     public void getPrimeAnnuelle (Integer performance, String matricule, Long nbYearsAnciennete,
@@ -80,7 +86,5 @@ public class EmployeTest {
         // Then
         Assertions.assertThat(prime).isEqualTo(primeAnnuelle);
     }
-
-
 
 }
