@@ -139,4 +139,25 @@ public class EmployeTest {
         Assertions.assertEquals(9000.0, employe.getSalaire().doubleValue());
 
     }
+
+
+    @ParameterizedTest
+    @CsvSource({
+            "1, 2019, 8",
+            "1, 2021, 11",
+            "0.5, 2022, 5",
+            "1, 2032, 12"
+    })
+    public void testNbRtt(Double tempsPartiel, Integer year, Integer nombreRtt) {
+        //Given
+        Employe employe = new Employe();
+        employe.setTempsPartiel(tempsPartiel);
+
+        //When
+        Integer totalRtt = employe.getNbRtt(LocalDate.of(year, 1, 1));
+
+        //Then
+        Assertions.assertEquals(totalRtt, nombreRtt);
+
+    }
 }
