@@ -75,15 +75,32 @@ public class Employe {
     }
 
     public Integer getNbRtt(LocalDate d){
-        int nbOfDays = d.isLeapYear() ? 365 : 366; // nombre de jours
+        int nbOfDays = d.isLeapYear() ? 366 : 365; // nombre de jours
         int nbWeekends = 104; // nombre de samedis et dimanches
         switch (LocalDate.of(d.getYear(),1,1).getDayOfWeek()){
-            case THURSDAY: if(d.isLeapYear()) nbWeekends =  nbWeekends + 1; break;
-            case FRIDAY: if(d.isLeapYear()) nbWeekends =  nbWeekends + 2; else nbWeekends =  nbWeekends + 1;
-            case SATURDAY: nbWeekends = nbWeekends + 1; break;
+            case FRIDAY:
+                if (d.isLeapYear()) {
+                    nbWeekends = nbWeekends + 1;
+                }
+                break;
+            case SATURDAY:
+                if (d.isLeapYear()) {
+                    nbWeekends = nbWeekends + 2;
+                }
+                else {
+                    nbWeekends = nbWeekends + 1;
+                }
+                break;
+            case SUNDAY:
+                if (!d.isLeapYear()) {
+                    nbWeekends = nbWeekends + 1;
+                }
+                break;
+            default:
+                break;
         }
         int monInt = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((nbOfDays - Entreprise.NB_JOURS_MAX_FORFAIT - nbOfDays - Entreprise.NB_CONGES_BASE - monInt) * tempsPartiel);
+        return (int) Math.ceil((nbOfDays - Entreprise.NB_JOURS_MAX_FORFAIT - nbWeekends - Entreprise.NB_CONGES_BASE - monInt) * tempsPartiel);
     }
 
     /**

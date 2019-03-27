@@ -157,7 +157,7 @@ public class EmployeTest {
         Integer totalRtt = employe.getNbRtt(LocalDate.of(year, 1, 1));
 
         //Then
-        Assertions.assertEquals(totalRtt, nombreRtt);
+        Assertions.assertEquals(nombreRtt, totalRtt);
 
     }
 }

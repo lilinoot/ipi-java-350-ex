@@ -84,7 +84,7 @@ public class EmployeService {
      * Cette performance lui est affectée et sauvegardée en BDD
      *
      * 1 : Si le chiffre d'affaire est inférieur de plus de 20% à l'objectif fixé, le commercial retombe à la performance de base
-     * 2 : Si le chiffre d'affaire est inférieur entre 20% et 5% par rapport à l'ojectif fixé, il perd 2 de performance (dans la limite de la performance de base)
+     * 2 : Si le chiffre d'affaire est inférieur entre 20% et 5% par rapport à l'objectif fixé, il perd 2 de performance (dans la limite de la performance de base)
      * 3 : Si le chiffre d'affaire est entre -5% et +5% de l'objectif fixé, la performance reste la même.
      * 4 : Si le chiffre d'affaire est supérieur entre 5 et 20%, il gagne 1 de performance
      * 5 : Si le chiffre d'affaire est supérieur de plus de 20%, il gagne 4 de performance
