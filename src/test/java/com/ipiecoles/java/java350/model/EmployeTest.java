@@ -148,7 +148,7 @@ public class EmployeTest {
             "0.5, 2022, 5",
             "1, 2032, 12"
     })
-    public void testNbRtt(Double tempsPartiel, Integer year, Integer nombreRtt) {
+    public void testNbRtt(Double tempsPartiel, Integer year, Integer nbRtt) {
         //Given
         Employe employe = new Employe();
         employe.setTempsPartiel(tempsPartiel);
@@ -157,7 +157,7 @@ public class EmployeTest {
         Integer totalRtt = employe.getNbRtt(LocalDate.of(year, 1, 1));
 
         //Then
-        Assertions.assertEquals(nombreRtt, totalRtt);
+        Assertions.assertEquals(nbRtt, totalRtt);
 
     }
 }

@@ -60,7 +60,7 @@ public class EmployeServiceIntegrationTest {
     }
 
     @Test
-    public void integrationCalculPerformanceSuperieurCinqEtVingt() throws EmployeException {
+    public void integrationCalculPerformanceSuperieurEntreVingtEtCinq() throws EmployeException {
         //Given
         employeRepository.save(new Employe("Doe", "John", "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 2, 1.0));
 
@@ -69,8 +69,8 @@ public class EmployeServiceIntegrationTest {
 
         //Then
         Employe employe = employeRepository.findByMatricule("C12345");
-        Integer performanceCalculee = employe.getPerformance();
-        Assertions.assertEquals(4, performanceCalculee.intValue());
+        Integer calculatedPerformance = employe.getPerformance();
+        Assertions.assertEquals(4, calculatedPerformance.intValue());
     }
 
 }

@@ -61,14 +61,14 @@ public class EmployeRepositoryTest {
     public void integrationAvgPerformanceWhereMatriculeStartsWith() {
         //Given
         employeRepository.save(new Employe("Doe", "John", "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 2, 1.0));
-        employeRepository.save(new Employe("Doe", "Patrick", "C12346", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
-        employeRepository.save(new Employe("Doe", "Maurice", "C12347", LocalDate.now(), Entreprise.SALAIRE_BASE, 4, 1.0));
-        employeRepository.save(new Employe("Doe", "Jean-Luc", "C12348", LocalDate.now(), Entreprise.SALAIRE_BASE, 3, 1.0));
+        employeRepository.save(new Employe("Harris", "Xander", "C12346", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
+        employeRepository.save(new Employe("Giles", "Rupert", "C12347", LocalDate.now(), Entreprise.SALAIRE_BASE, 4, 1.0));
+        employeRepository.save(new Employe("Rosenberg", "Willow", "C12348", LocalDate.now(), Entreprise.SALAIRE_BASE, 3, 1.0));
 
         //When
-        Double avgPerformanceCalculee = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
+        Double avgCalculatedPerformance = employeRepository.avgPerformanceWhereMatriculeStartsWith("C");
 
         //Then
-        Assertions.assertEquals(2.5, avgPerformanceCalculee.doubleValue());
+        Assertions.assertEquals(2.5, avgCalculatedPerformance.doubleValue());
     }
 }

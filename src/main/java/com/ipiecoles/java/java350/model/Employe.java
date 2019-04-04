@@ -75,8 +75,9 @@ public class Employe {
     }
 
     public Integer getNbRtt(LocalDate d){
-        int nbOfDays = d.isLeapYear() ? 366 : 365; // nombre de jours
-        int nbWeekends = 104; // nombre de samedis et dimanches
+        int nbOfDays = d.isLeapYear() ? 366 : 365; // Nombre de jours dans l'année
+        int nbWeekends = 104; // Nombre de samedis et dimanches
+
         switch (LocalDate.of(d.getYear(),1,1).getDayOfWeek()){
             case FRIDAY:
                 if (d.isLeapYear()) {
@@ -96,11 +97,11 @@ public class Employe {
                     nbWeekends = nbWeekends + 1;
                 }
                 break;
-            default:
+            default: // Si aucun des cas n'est rencontré
                 break;
         }
-        int monInt = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
-        return (int) Math.ceil((nbOfDays - Entreprise.NB_JOURS_MAX_FORFAIT - nbWeekends - Entreprise.NB_CONGES_BASE - monInt) * tempsPartiel);
+        int nbOfBankHolidays = (int) Entreprise.joursFeries(d).stream().filter(localDate -> localDate.getDayOfWeek().getValue() <= DayOfWeek.FRIDAY.getValue()).count();
+        return (int) Math.ceil((nbOfDays - Entreprise.NB_JOURS_MAX_FORFAIT - nbWeekends - Entreprise.NB_CONGES_BASE - nbOfBankHolidays) * tempsPartiel);
     }
 
     /**

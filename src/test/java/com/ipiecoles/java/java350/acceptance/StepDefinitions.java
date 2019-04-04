@@ -54,12 +54,12 @@ public class StepDefinitions {
     }
 
     @Step("Je calcule la performance du commercial <matricule> pour un chiffre d'affaire réalisé de <caTraite> et un objectif de <caCible>")
-    public void calculePerformance(String matricule, Long caTraite, Long caCible) throws EmployeException {
+    public void calculPerformance(String matricule, Long caTraite, Long caCible) throws EmployeException {
         employeService.calculPerformanceCommercial(matricule, caTraite, caCible);
     }
 
     @Step("J'obtiens une performance de <perfAttendue> pour le commercial <matricule>")
-    public void testPerformance(Integer perfAttendue, String matricule) throws EmployeException {
+    public void testPerformance(Integer perfAttendue, String matricule) {
         Employe commercial = employeRepository.findByMatricule(matricule);
         Assertions.assertEquals(perfAttendue, commercial.getPerformance());
     }
