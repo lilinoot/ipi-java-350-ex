@@ -60,7 +60,7 @@ public class EmployeRepositoryTest {
     @Test
     public void integrationAvgPerformanceWhereMatriculeStartsWith() {
         //Given
-        employeRepository.save(new Employe("Doe", "John", "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 2, 1.0));
+        employeRepository.save(new Employe("Wells", "Andrew", "C12345", LocalDate.now(), Entreprise.SALAIRE_BASE, 2, 1.0));
         employeRepository.save(new Employe("Harris", "Xander", "C12346", LocalDate.now(), Entreprise.SALAIRE_BASE, 1, 1.0));
         employeRepository.save(new Employe("Giles", "Rupert", "C12347", LocalDate.now(), Entreprise.SALAIRE_BASE, 4, 1.0));
         employeRepository.save(new Employe("Rosenberg", "Willow", "C12348", LocalDate.now(), Entreprise.SALAIRE_BASE, 3, 1.0));
